@@ -1,6 +1,8 @@
 import re
 
-my_string = "Place of delivery of goods or place of performance of work or provision of services: 82172, Ukraine, Lviv Region, Stebnyk, str. Doroshenko, 1 Deadline for delivery of goods, performance of works or provision of services: 31.12.2023"
+my_string = ("Place of delivery of goods or place of performance of work or provision of services: 82172, Ukraine, "
+             "Lviv Region, Stebnyk, str. Doroshenko, 1 Deadline for delivery of goods, performance of works or "
+             "provision of services: 31.12.2023")
 
 if __name__ == '__main__':
     data = {}
