@@ -1,5 +1,5 @@
 import pytest
-from car import Car  # Assuming 'Car' is the class you are testing
+from car import Car
 
 @pytest.fixture
 def car_with_initial_limit_200():
@@ -43,4 +43,3 @@ def car_for_multiple_start_stop_test():
     car.start_engine()
     return car
 
-# ... (you can continue defining fixtures for other test cases)
