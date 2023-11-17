@@ -6,10 +6,10 @@ from HarvestStoreAutomation.page_objects.base_page import BasePage
 class AccountPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
-        self.edit_account_locator = (By.XPATH, '/html/body/div[3]')
-        self.change_password_locator = (By.XPATH, '/html/body/div[3]/div[2]/div/div/div/div/div[2]/a/div/div')
-        self.change_address_locator = (By.XPATH, '/html/body/div[3]/div[2]/div/div/div/div/div[3]/a/div/h3')
-        self.orders_locator = (By.XPATH, '/html/body/div[3]/div[2]/div/div/div/div/div[4]/a')
+        self.edit_account_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/edit-account/"]')
+        self.change_password_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/change-password/"]')
+        self.change_address_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/address-book/"]')
+        self.orders_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/order-history/"]')
 
     def wait_for_account_page_to_load(self):
         wait = WebDriverWait(self.driver, 20)

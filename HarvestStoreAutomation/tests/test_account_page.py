@@ -2,6 +2,7 @@ import pytest
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from HarvestStoreAutomation.page_objects.login_page import LoginPage
 
 @pytest.mark.usefixtures("setup")
@@ -9,39 +10,52 @@ def test_account_page_actions(setup):
     driver = setup
     login_page = LoginPage(driver)
 
-    # Виконаємо вхід на сторінку
+    # Perform login action to reach the account page
     login_page.open("https://harvest-clothing.com.ua/login/")
     login_page.set_login("prencezza12@gmail.com")
     login_page.set_password("Canima_222")
     login_page.click_login_btn()
 
-    # Перевіримо, чи ми на сторінці особистого кабінету
+    # Verify that we are on the account page
     assert "https://harvest-clothing.com.ua/account/" in driver.current_url
 
-    # Задамо локатори для різних елементів на сторінці особистого кабінету
-    edit_account_locator = (By.XPATH, '')
-    change_password_locator = (By.XPATH, '')
-    change_address_locator = (By.XPATH, '//*[@id="change-address"]')
-    orders_locator = (By.XPATH, '//*[@id="orders"]')
+    # Define locators for different elements on the account page
+    edit_account_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/edit-account/"]')
+    change_password_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/change-password/"]')
+    change_address_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/address-book/"]')
+    orders_locator = (By.CSS_SELECTOR, 'a[href="https://harvest-clothing.com.ua/order-history/"]')
 
-    # Зачекаємо видимості різних елементів на сторінці
+    # Wait for the visibility and clickability of different elements on the page
     wait = WebDriverWait(driver, 20)
-    wait.until(EC.visibility_of_element_located(edit_account_locator))
-    wait.until(EC.visibility_of_element_located(change_password_locator))
-    wait.until(EC.visibility_of_element_located(change_address_locator))
-    wait.until(EC.visibility_of_element_located(orders_locator))
 
-    # Взаємодія з елементами
-    driver.find_element(*edit_account_locator).click()
-    # Тут ви можете додати перевірки або взаємодію зі сторінкою редагування облікового запису
+    # Edit Account
+    edit_account_element = wait.until(EC.element_to_be_clickable(edit_account_locator))
+    edit_account_element.click()
+    assert "https://harvest-clothing.com.ua/edit-account/" in driver.current_url
+    # Perform actions specific to the edit account page if needed
 
-    driver.find_element(*change_password_locator).click()
-    # Тут ви можете додати перевірки або взаємодію зі сторінкою зміни пароля
+    # Change Password
+    change_password_element = wait.until(EC.element_to_be_clickable(change_password_locator))
+    change_password_element.click()
+    assert "https://harvest-clothing.com.ua/change-password/" in driver.current_url
+    # Perform actions specific to the change password page if needed
 
-    driver.find_element(*change_address_locator).click()
-    # Тут ви можете додати перевірки або взаємодію зі сторінкою зміни адреси
+    # Change Address
+    change_address_element = wait.until(EC.element_to_be_clickable(change_address_locator))
+    change_address_element.click()
+    assert "https://harvest-clothing.com.ua/address-book/" in driver.current_url
+    # Perform actions specific to the change address page if needed
 
-    driver.find_element(*orders_locator).click()
-    # Тут ви можете додати перевірки або взаємодію зі сторінкою замовлень
+    # Orders
+    orders_element = wait.until(EC.element_to_be_clickable(orders_locator))
+    orders_element.click()
 
-    # Додайте свої перевірки на кожному етапі, щоб підтвердити, що ви опинились на правильних сторінках або виконали відповідні дії
+    # Wait for the page to fully load
+    WebDriverWait(driver, 20).until(lambda driver: "order-history" in driver.current_url)
+
+    # Assert the URL
+    assert "https://harvest-clothing.com.ua/order-history/" in driver.current_url
+    # Perform actions specific to the orders page if needed
+
+
+

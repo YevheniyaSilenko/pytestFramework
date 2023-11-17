@@ -23,3 +23,6 @@ class LoginPage(BasePage):
     def click_login_btn(self):
         self.wait_element_is_clickable(self.loc_login_btn)
         self.click(self.loc_login_btn)
+
+    def click_element(self, orders_locator):
+        pass
