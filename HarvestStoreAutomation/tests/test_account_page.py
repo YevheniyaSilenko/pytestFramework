@@ -21,9 +21,9 @@ def test_account_page_actions(setup):
 
     # Define locators for different elements on the account page
     edit_account_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/edit-account/"]')
-    change_password_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/change-password/"]')
+    change_password_locator = (By.CSS_SELECTOR, 'a[href="https://harvest-clothing.com.ua/change-password/"]')
     change_address_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/address-book/"]')
-    orders_locator = (By.CSS_SELECTOR, 'a[href="https://harvest-clothing.com.ua/order-history/"]')
+    orders_locator = (By.LINK_TEXT, 'Історія замовлень')
 
     # Wait for the visibility and clickability of different elements on the page
     wait = WebDriverWait(driver, 20)
@@ -49,13 +49,11 @@ def test_account_page_actions(setup):
     # Orders
     orders_element = wait.until(EC.element_to_be_clickable(orders_locator))
     orders_element.click()
-
-    # Wait for the page to fully load
-    WebDriverWait(driver, 20).until(lambda driver: "order-history" in driver.current_url)
-
-    # Assert the URL
     assert "https://harvest-clothing.com.ua/order-history/" in driver.current_url
-    # Perform actions specific to the orders page if needed
+
+
+
+
 
 
 

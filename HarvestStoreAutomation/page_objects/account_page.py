@@ -7,9 +7,10 @@ class AccountPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         self.edit_account_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/edit-account/"]')
-        self.change_password_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/change-password/"]')
+        self.change_password_locator = (By.CSS_SELECTOR, 'a[href="https://harvest-clothing.com.ua/change-password/"]')
+
         self.change_address_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/address-book/"]')
-        self.orders_locator = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/order-history/"]')
+        self.orders_locator = ((By.LINK_TEXT, 'Історія замовлень'))
 
     def wait_for_account_page_to_load(self):
         wait = WebDriverWait(self.driver, 20)
