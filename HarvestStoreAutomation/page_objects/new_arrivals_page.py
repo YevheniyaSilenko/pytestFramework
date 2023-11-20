@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class NewArrivalsPage:
     # Define locators for 10 clickable elements
-    SWEETSHOT1_LOCATOR = (By.ID,'<a href="https://harvest-clothing.com.ua/clothing/zhenschinam/w-hud%D1%96-ta-sv%D1%96tshoty/sweatshirt-holliday-black" id="hollidayLink">Світшот "HOLLIDAY" з блискавкою чорний</a>')
+    SWEETSHOT1_LOCATOR = (By.CSS_SELECTOR, '<a href="https://harvest-clothing.com.ua/clothing/zhenschinam/w-hud%D1%96-ta-sv%D1%96tshoty/sweatshirt-holliday-black" id="hollidayLink">Світшот "HOLLIDAY" з блискавкою чорний</a>')
     ELEMENT2_LOCATOR = (By.XPATH, '//*[@id="element2"]')
     ELEMENT3_LOCATOR = (By.XPATH, '//*[@id="element3"]')
     ELEMENT4_LOCATOR = (By.XPATH, '//*[@id="element4"]')
@@ -21,16 +21,16 @@ class NewArrivalsPage:
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
-        def find_element(self, *locator):
+    def find_element(self, *locator):
             return self.driver.find_element(*locator)
 
-        def navigate_to_main_page(self):
+    def navigate_to_new_arrivals_page(self):
             self.driver.get("https://harvest-clothing.com.ua/new")
 
         def get_page_title(self):
             return self.driver.title
 
-    def click_element1(self):
+    def click_sweetshot1(self):
         self.click_element(self.SWEETSHOT1_LOCATOR)
 
     def click_element2(self):
@@ -62,4 +62,5 @@ class NewArrivalsPage:
 
     def click_element(self, locator):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator)).click()
+
 
