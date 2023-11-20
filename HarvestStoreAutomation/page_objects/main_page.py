@@ -35,6 +35,11 @@ class MainPage:
     def scroll_into_view(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
 
+    def click_information(self):
+        information_link = self.find_element(*self.INFORMATION_LOCATOR)
+        self.scroll_into_view(information_link)
+        information_link.click()
+
     def click_contacts(self):
         # Scroll to the "Контакти" element
         contacts_element = self.find_element(*self.CONTACTS_LOCATOR)
