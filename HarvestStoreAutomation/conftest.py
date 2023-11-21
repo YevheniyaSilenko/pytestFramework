@@ -48,6 +48,3 @@ def actions(setup):
         driver = setup
         login_page = LoginPage(driver)
 
-
-
-

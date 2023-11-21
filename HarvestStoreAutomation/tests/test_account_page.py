@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from HarvestStoreAutomation.page_objects.login_page import LoginPage
 
+
 @pytest.mark.usefixtures("setup")
 def test_account_page_actions(setup):
     driver = setup
@@ -49,10 +50,3 @@ def test_account_page_actions(setup):
     orders_element = wait.until(EC.element_to_be_clickable(orders_locator))
     orders_element.click()
     assert "https://harvest-clothing.com.ua/order-history/" in driver.current_url
-
-
-
-
-
-
-
