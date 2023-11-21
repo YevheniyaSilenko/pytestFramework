@@ -7,7 +7,7 @@ class NewArrivalsPage:
     # Define locators for 10 clickable elements
     SWEETSHOT1_LOCATOR = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/clothing/zhenschinam/w-hud%D1%96-ta-sv%D1%96tshoty/sweatshirt-holliday-black"]')
     SWEETSHOT2_LOCATOR = (By.XPATH, '//a[href="https://harvest-clothing.com.ua/clothing/zhenschinam/w-kostyumi/suit-holiday-tash"]')
-    CASPER3_LOCATOR = (By.XPATH, '//a[text()="CASPER" принт уява"]')
+    CASPER3_LOCATOR = {By.XPATH, '//a[text()='"ROLL" чорний']'}
 
     ELEMENT4_LOCATOR = (By.XPATH, '//*[@id="el"]')
     ELEMENT5_LOCATOR = (By.XPATH, '//*[@id="element5"]')

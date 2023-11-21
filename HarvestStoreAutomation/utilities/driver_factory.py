@@ -24,7 +24,7 @@ class DriverFactory:
     @staticmethod
     def __get_chrome_driver():
         _options = ChromeOptions()
-        _options.browser_version = '114'
+        _options.browser_version = '119'
 
         # Вказати шлях до chromedriver через Service
         service = Service("/usr/local/bin/chromedriver")
