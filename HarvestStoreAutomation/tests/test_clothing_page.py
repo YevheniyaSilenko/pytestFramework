@@ -1,11 +1,11 @@
 import unittest
 from selenium import webdriver
-from clothing_page import ClothingPage
 from main_page import MainPage
+from HarvestStoreAutomation.page_objects.clothing_page import ClothingPage
 
 class TestClothingPage(unittest.TestCase):
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path="/path/to/chromedriver")
+        driver = webdriver.Chrome(executable_path="/opt/homebrew/bin/chromedriver")
         self.driver.maximize_window()
 
     def tearDown(self):
