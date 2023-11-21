@@ -39,3 +39,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 def wait(setup):
     return WebDriverWait(setup, 20)
 
+def setup():
+    driver = webdriver.Chrome()
+    yield driver
+    driver.quit()
+
+def actions(setup):
+        driver = setup
+        login_page = LoginPage(driver)
+
+
+
+

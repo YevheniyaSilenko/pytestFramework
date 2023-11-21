@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class ClothingPage:
     # Add locators for elements on the clothing page
-    FIRST_PRODUCT_LOCATOR = (By.XPATH, '//div[@class="prd-grid"]/div[1]//a[@class="prd-img"]')
+    FOR_WOMAN_LOCATOR = (By.CSS_SELECTOR, 'a[href="https://harvest-clothing.com.ua/clothing/zhenschinam/"]')
     SECOND_PRODUCT_LOCATOR = (By.XPATH, '//div[@class="prd-grid"]/div[2]//a[@class="prd-img"]')
 
     def __init__(self, driver: WebDriver):
@@ -22,9 +22,9 @@ class ClothingPage:
 
     # Add additional methods for interacting with elements on the clothing page
     def click_first_product(self):
-        first_product_element = self.find_element(*self.FIRST_PRODUCT_LOCATOR)
+        first_product_element = self.find_element(*self.FOR_WOMAN_LOCATOR)
         self.scroll_into_view(first_product_element)
-        self.click_element(self.FIRST_PRODUCT_LOCATOR)
+        self.click_element(self.FOR_WOMAN_LOCATOR)
 
     def click_second_product(self):
         second_product_element = self.find_element(*self.SECOND_PRODUCT_LOCATOR)
