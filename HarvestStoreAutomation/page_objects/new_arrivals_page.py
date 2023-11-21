@@ -7,9 +7,8 @@ class NewArrivalsPage:
     # Define locators for 10 clickable elements
     SWEETSHOT1_LOCATOR = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/clothing/zhenschinam/w-hud%D1%96-ta-sv%D1%96tshoty/sweatshirt-holliday-black"]')
     SWEETSHOT2_LOCATOR = (By.XPATH, '//a[href="https://harvest-clothing.com.ua/clothing/zhenschinam/w-kostyumi/suit-holiday-tash"]')
-    CASPER3_LOCATOR = {By.XPATH, '//a[text()='"ROLL" чорний']'}
-
-    ELEMENT4_LOCATOR = (By.XPATH, '//*[@id="el"]')
+    CASPER3_LOCATOR = (By.XPATH, '//*[@id="element3"]')
+    ELEMENT4_LOCATOR = (By.XPATH, '//*[@id="element4"]')
     ELEMENT5_LOCATOR = (By.XPATH, '//*[@id="element5"]')
     ELEMENT6_LOCATOR = (By.XPATH, '//*[@id="element6"]')
     ELEMENT7_LOCATOR = (By.XPATH, '//*[@id="element7"]')
@@ -22,6 +21,12 @@ class NewArrivalsPage:
 
     def find_element(self, *locator):
             return self.driver.find_element(*locator)
+
+    def scroll_into_view(self, element):
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+
+    def click_element(self, locator):
+        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(locator)).click()
 
     def navigate_to_new_arrivals_page(self):
             self.driver.get("https://harvest-clothing.com.ua/new")
@@ -36,7 +41,7 @@ class NewArrivalsPage:
         self.click_element(self.SWEETSHOT1_LOCATOR)
 
     def click_sweetshot2(self):
-        self.click_element(self.SWEETSHOT2_LOCATOR)
+         self.click_element(self.SWEETSHOT1_LOCATOR)
 
     def click_casper3(self):
         self.click_element(self.CASPER3_LOCATOR)
