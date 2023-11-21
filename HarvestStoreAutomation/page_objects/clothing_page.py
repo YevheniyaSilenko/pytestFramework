@@ -17,11 +17,14 @@ class ClothingPage:
     def scroll_into_view(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
 
+    def navigate_to_clothing_page(self):
+            self.driver.get("https://harvest-clothing.com.ua/clothing")
+
     def click_element(self, locator):
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(locator)).click()
 
     # Add additional methods for interacting with elements on the clothing page
-    def click_first_product(self):
+    def click_for_woman_product(self):
         first_product_element = self.find_element(*self.FOR_WOMAN_LOCATOR)
         self.scroll_into_view(first_product_element)
         self.click_element(self.FOR_WOMAN_LOCATOR)
