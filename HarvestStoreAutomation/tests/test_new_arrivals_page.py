@@ -28,6 +28,12 @@ class TestNewArrivalsPage:
         new_arrivals_page.navigate_to_new_arrivals_page()
         new_arrivals_page.click_sweetshot2()
         # Add assertions or verifications as needed
-        assert "Expected Result" in new_arrivals_page.get_title()
+        assert 'Костюм "HOLIDAY" таш – HARVEST' in new_arrivals_page.get_title()
 
-    # ... Repeat similar tests for other elements (element3, element4, ..., element10)
+    def test_click_casper3(self, setup):
+        new_arrivals_page = NewArrivalsPage(setup)
+        new_arrivals_page.navigate_to_new_arrivals_page()
+        new_arrivals_page.click_casper3()
+        # Add assertions or verifications as needed
+        assert 'Костюм "HOLIDAY" таш – HARVEST' in new_arrivals_page.get_title()
+
