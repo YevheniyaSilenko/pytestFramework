@@ -5,18 +5,15 @@ from HarvestStoreAutomation.page_objects.account_page import AccountPage
 
 
 @pytest.fixture
-def setup():
+def setup(request):  # Include the 'request' parameter
     driver = webdriver.Chrome()
     yield driver
     driver.quit()
-
 
     def teardown():
         driver.quit()
 
     request.addfinalizer(teardown)
-
-    return driver
 
 @pytest.fixture
 def account_page(login):
@@ -54,10 +51,3 @@ def browser():
 def login_page(browser):
     # This fixture provides a LoginPage instance
     return LoginPage(browser)
-
-
-@pytest.fixture
-def account_page(browser):
-    # This fixture provides an AccountPage instance
-    return AccountPage(browser)
-

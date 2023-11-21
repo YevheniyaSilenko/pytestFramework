@@ -10,6 +10,7 @@ def test_account_page_actions(setup):
     driver = setup
     login_page = LoginPage(driver)
 
+
     # Perform login action to reach the account page
     login_page.open("https://harvest-clothing.com.ua/login/")
     login_page.set_login("prencezza12@gmail.com")
