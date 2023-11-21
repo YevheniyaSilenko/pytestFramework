@@ -3,12 +3,10 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
-
 class NewArrivalsPage:
     # Define locators for 10 clickable elements
-    SWEETSHOT1_LOCATOR = (By.CSS_SELECTOR, '<a href="https://harvest-clothing.com.ua/clothing/zhenschinam/w-hud%D1%96-ta-sv%D1%96tshoty/sweatshirt-holliday-black" id="hollidayLink">Світшот "HOLLIDAY" з блискавкою чорний</a>')
-    ELEMENT2_LOCATOR = (By.XPATH, '//*[@id="element2"]')
+    SWEETSHOT1_LOCATOR = (By.XPATH, '//a[@href="https://harvest-clothing.com.ua/clothing/zhenschinam/w-hud%D1%96-ta-sv%D1%96tshoty/sweatshirt-holliday-black"]')
+    SWEETSHOT2_LOCATOR = (By.CSS_SELECTOR, 'a[href="https://harvest-clothing.com.ua/clothing/zhenschinam/w-kostyumi/suit-holiday-tash"]')
     ELEMENT3_LOCATOR = (By.XPATH, '//*[@id="element3"]')
     ELEMENT4_LOCATOR = (By.XPATH, '//*[@id="element4"]')
     ELEMENT5_LOCATOR = (By.XPATH, '//*[@id="element5"]')
@@ -27,14 +25,17 @@ class NewArrivalsPage:
     def navigate_to_new_arrivals_page(self):
             self.driver.get("https://harvest-clothing.com.ua/new")
 
-        def get_page_title(self):
+    def get_page_title(self):
             return self.driver.title
+
+    def get_title(self):
+        return self.driver.title
 
     def click_sweetshot1(self):
         self.click_element(self.SWEETSHOT1_LOCATOR)
 
-    def click_element2(self):
-        self.click_element(self.ELEMENT2_LOCATOR)
+    def click_sweetshot2(self):
+        self.click_element(self.SWEETSHOT2_LOCATOR)
 
     def click_element3(self):
         self.click_element(self.ELEMENT3_LOCATOR)
@@ -61,6 +62,6 @@ class NewArrivalsPage:
         self.click_element(self.ELEMENT10_LOCATOR)
 
     def click_element(self, locator):
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator)).click()
+        WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(locator)).click()
 
 

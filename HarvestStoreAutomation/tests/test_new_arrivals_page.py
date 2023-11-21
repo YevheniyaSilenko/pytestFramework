@@ -21,12 +21,12 @@ class TestNewArrivalsPage:
         new_arrivals_page.navigate_to_new_arrivals_page()
         new_arrivals_page.click_sweetshot1()
         # Add assertions or verifications as needed
-        assert "Expected Result" in new_arrivals_page.get_title()
+        assert 'Cвітшот на флісі чорний "HOLIDAY" - HARVEST' in new_arrivals_page.get_title()
 
-    def test_click_element2(self, setup):
+    def test_click_sweetshot2(self, setup):
         new_arrivals_page = NewArrivalsPage(setup)
         new_arrivals_page.navigate_to_new_arrivals_page()
-        new_arrivals_page.click_element2()
+        new_arrivals_page.click_sweetshot2()
         # Add assertions or verifications as needed
         assert "Expected Result" in new_arrivals_page.get_title()
 
