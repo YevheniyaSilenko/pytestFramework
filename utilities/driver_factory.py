@@ -38,7 +38,7 @@ class DriverFactory:
                 options=_options)
             return driver
         else:
-            _options.browser_version = '114'
+        #    _options.browser_version = '114'
             driver = Chrome(options=_options)
             return driver
 
