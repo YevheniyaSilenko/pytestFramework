@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from HarvestStoreAutomation.page_objects.main_page import MainPage
+from page_objects.main_page import MainPage
 
 
 class TestMainPage:
@@ -40,7 +40,3 @@ class TestMainPage:
     @pytest.mark.skip(reason="Test skipped intentionally.")
     def test_click_information(self, setup):
         pytest.skip("Skipping test_click_information")
-
-
-if __name__ == "__main__":
-    pytest.main()

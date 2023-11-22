@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from HarvestStoreAutomation.page_objects.new_arrivals_page import NewArrivalsPage
+from page_objects.new_arrivals_page import NewArrivalsPage
 
 class TestNewArrivalsPage:
     @pytest.fixture

@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from HarvestStoreAutomation.page_objects.base_page import BasePage
+from page_objects.base_page import BasePage
 
 class LoginPage(BasePage):
     def __init__(self, driver):
@@ -26,3 +26,8 @@ class LoginPage(BasePage):
 
     def click_element(self, orders_locator):
         pass
+
+    def login(self, login: str, password: str):
+        self.set_login(login)
+        self.set_password(password)
+        self.click_login_btn()

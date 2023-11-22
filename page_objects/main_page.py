@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 
+
 class MainPage:
     WISHLIST_LOCATOR = (By.XPATH, '//*[@id="wishlist-total"]')
     ACCOUNT_LOCATOR = (By.CSS_SELECTOR, "i.icon.icon-person")
@@ -47,7 +48,8 @@ class MainPage:
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.CONTACTS_LOCATOR)).click()
 
     def scroll_to_element(self, element):
-        self.driver.execute_script("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", element)
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", element)
 
     def click_element(self, locator):
         WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(locator)).click()
