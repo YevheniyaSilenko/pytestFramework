@@ -1,5 +1,5 @@
-def test_get_all_products(products_repo):
+def test_get_all_wares(products_repo):
     db = products_repo
-    all.prod = db.get_all()
-    for prod in all_prod:
-        print(prod)
+    all.wares = db.get_all()
+    for wares in all_wares:
+        print(wares)
