@@ -1,8 +1,4 @@
-import sqlite3
-from utilities.deco import singleton
 
-
-@singleton
 class Sqlite:
     def __init__(self, db_params):
         self.path = db_params
