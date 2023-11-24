@@ -1,4 +1,3 @@
-
 class Sqlite:
     def __init__(self, db_params):
         self.path = db_params
