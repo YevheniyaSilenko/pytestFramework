@@ -2,11 +2,9 @@ from constants import ROOT_PATH
 from utilities.sqlite_cm import Sqlite
 
 if __name__ == '__main__':
-    db_path = f'{ROOT_PATH}/db/test.db'
-
-    with Sqlite(db_path) as c:
+    with Sqlite(f'{ROOT_PATH}/db/test.db') as c:
         query_create = '''
-        CREATE TABLE IF NOT EXISTS PRODUCTS 
+        CREATE TABLE PRODUCTS 
         (id INTEGER PRIMARY KEY,
         name TEXT,
         category TEXT,
@@ -24,3 +22,4 @@ if __name__ == '__main__':
 
         res = c.execute("SELECT * FROM PRODUCTS")
         print(res.fetchall())
+

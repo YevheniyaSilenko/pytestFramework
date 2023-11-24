@@ -3,6 +3,7 @@ class Sqlite:
     def __init__(self, db_params):
         self.path = db_params
 
+
     def __enter__(self):
         self.conn = sqlite3.connect(database=self.path)
         self.cursor = self.conn.cursor()
