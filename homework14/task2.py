@@ -1,7 +1,7 @@
-### https://store.ferrari.com/en-us/
+# https://store.ferrari.com/en-us/
 
-###30 XPATH locators
-
+# 30 XPATH locators
+"""
 1.loc_absolute=/html
 2.loc_body=//body
 3.loc_ferrari_logo=//img[@alt="Ferrari Logo"]
@@ -56,3 +56,4 @@ CSS_locator: css_subscribe_button=button:contains("Subscribe")
 CSS_locator: css_instagram_icon_footer=footer i.fa.fa-instagram
 10.XPath_locator: loc_find_a_store_footer=//footer//a[contains(text(), "Find a Store")]
 CSS_locator: css_find_a_store_footer=footer a:contains("Find a Store")
+"""
