@@ -31,3 +31,9 @@ def test_click_for_shorts(open_clothing_page):
     excepted_title = 'Чоловічі шорти | Купити шорти чоловічі трикотажні | Harvest'
     assert excepted_title == clothing_page.get_title()
 
+def test_click_for_sweetshorts(open_clothing_page):
+    clothing_page = open_clothing_page
+    clothing_page.click_for_sweetshorts()
+    excepted_title = 'Худі та світшоти для чоловіків від українського бренду - Harvest'
+    assert excepted_title == clothing_page.get_title()
+

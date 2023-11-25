@@ -12,7 +12,7 @@ class ClothingPage(BasePage):
     SUB_MENU_FOR_X_NU_OT_LOCATOR = (By.XPATH, '//ul[@class="submenu-list"]//a[@href="https://harvest-clothing.com.ua/clothing/zhenschinam/harvest-x-nu-ot-9/"]')
     SUB_MENU_FOR_SUITS_LOCATOR = (By.XPATH, '//ul[@class="submenu-list"]//a[@href="https://harvest-clothing.com.ua/clothing/zhenschinam/w-kostyumi/"]')
     SUB_MENU_FOR_SHORTS_LOCATOR = (By.XPATH, '//ul[@class="submenu-list"]//a[@href="https://harvest-clothing.com.ua/clothing/muzhchinam/m-shorty/"]')
-
+    SWEETSHORTS_LOCATOR = (By.CSS_SELECTOR, 'ul.submenu-list a[href*="https://harvest-clothing.com.ua/clothing/muzhchinam/hud%D1%96-ta-sv%D1%96tshoty/"]')
     def click_for_woman(self):
         self.mouse_hover(self.MAIN_MENU_CLOTHING)
         self.click(self.SUB_MENU_FOR_WOMAN_LOCATOR)
@@ -34,6 +34,10 @@ class ClothingPage(BasePage):
     def click_for_shorts(self):
         self.mouse_hover(self.MAIN_MENU_CLOTHING)
         self.click(self.SUB_MENU_FOR_SHORTS_LOCATOR)
+
+    def click_for_sweetshorts(self):
+        self.mouse_hover(self.MAIN_MENU_CLOTHING)
+        self.click(self.SWEETSHORTS_LOCATOR)
 
 
 
