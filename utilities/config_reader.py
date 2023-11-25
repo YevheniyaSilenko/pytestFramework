@@ -10,6 +10,7 @@ class AppConfig:
     url = _config.get('app_data', 'url')
     account_page_url = _config.get('page_urls', 'account_page')
     clothing_page_url = _config.get('page_urls', 'clothing_page')
+    accessories_page_url = _config.get('page_urls', 'accessories_page')
     new_arrivales_page_url = _config.get('page_urls', 'new_arrivales_page')
     main_page_url = _config.get('page_urls', 'main_page')
     login_page_url = _config.get('page_urls', 'login_page')

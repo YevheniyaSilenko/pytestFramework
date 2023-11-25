@@ -1,4 +1,6 @@
 import pytest
+
+from page_objects.accessories_page import AccessoriesPage
 from page_objects.login_page import LoginPage
 from page_objects.account_page import AccountPage
 from utilities.driver_factory import DriverFactory
