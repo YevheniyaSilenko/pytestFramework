@@ -8,3 +8,4 @@ class BaseDbConnection:
         self.__path = db_params
         self.conn = sqlite3.connect(database=self.__path)
         self.cursor = self.conn.cursor()
+

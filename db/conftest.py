@@ -14,7 +14,7 @@ def products_repo_pg(env):
 
 
 @pytest.fixture()
-def fake_employee(fake):
+def fake_ware(fake):
     data = {
         "user_id": fake.pyint(1000, 1000000),
         "name": fake.first_name(),
@@ -23,4 +23,11 @@ def fake_employee(fake):
         "salary": float(fake.pyint(10000, 60000))
     }
     return data
+
+@pytest.fixture(scope='session')
+def env(request):
+    _env_name = request.config.getoption('--env')
+    with open(f'{ROOT_PATH}/configs/{_env_name}.json') as f:
+        conf_dict = json.loads(f.read())
+        return DictToClass(**conf_dict)
 
