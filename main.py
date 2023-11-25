@@ -4,7 +4,7 @@ from utilities.sqlite_cm import Sqlite
 if __name__ == '__main__':
     with Sqlite(f'{ROOT_PATH}/db/test.db') as c:
         query_create = '''
-        CREATE TABLE PRODUCTS 
+        CREATE TABLE PRODUCTS  
         (id INTEGER PRIMARY KEY,
         name TEXT,
         category TEXT,
