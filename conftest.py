@@ -42,3 +42,10 @@ def open_clothing_page_anonim(create_driver):
     driver = create_driver
     driver.get(AppConfig.clothing_page_url)
     return ClothingPage(driver)
+
+@pytest.fixture
+def open_accessories_page(login):
+    login.driver.get(AppConfig.accessories_page_url)
+    return AccessoriesPage(login.driver)
+
+

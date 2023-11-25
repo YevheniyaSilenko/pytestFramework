@@ -1,4 +1,4 @@
- def test_edit_account(open_account_page):
+def test_edit_account(open_account_page):
     account_page = open_account_page
     # Verify that we are on the account page
     assert "https://harvest-clothing.com.ua/account/" in account_page.get_current_url()

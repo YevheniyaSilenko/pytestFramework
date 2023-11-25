@@ -33,10 +33,4 @@ class TestMainPage:
         main_page.navigate_to_main_page()
         main_page.click_cart()
 
-    @pytest.mark.skip(reason="Test skipped intentionally.")
-    def test_click_contacts(self, setup):
-        pytest.skip("Skipping test_click_contacts")
 
-    @pytest.mark.skip(reason="Test skipped intentionally.")
-    def test_click_information(self, setup):
-        pytest.skip("Skipping test_click_information")
