@@ -5,11 +5,29 @@ class AccessoriesPage(BasePage):
    def __init__(self, driver):
         super().__init__(driver)
 
-MAIN_MENU_ACCESSORIES = (By.XPATH, '//ul[@class="mmenu mmenu-js"]//a[@href="https://harvest-clothing.com.ua/accessories/"]')
-SUB_MENU_FOR_BACKPACKS_LOCATOR = (By.XPATH, '//h3[@class="submenu-title"]//a[@href="https://harvest-clothing.com.ua/accessories/backpacks/"]')
+   MAIN_MENU_ACCESSORIES = (By.XPATH, '//ul[@class="mmenu mmenu-js"]//a[@href="https://harvest-clothing.com.ua/accessories/"]')
+   SUB_MENU_FOR_BACKPACKS_LOCATOR = (By.XPATH, '//h3[@class="submenu-title"]//a[@href="https://harvest-clothing.com.ua/accessories/backpacks/"]')
+   SUB_MENU_FOR_BAGS_LOCATOR = (By.XPATH, '//h3[@class="submenu-title"]//a[@href="https://harvest-clothing.com.ua/accessories/bags/"]')
+   SUB_MENU_FOR_OTHER_LOCATOR = (By.CSS_SELECTOR, 'h3.submenu-title a[href="https://harvest-clothing.com.ua/accessories/portmone/"]')
+   SUB_MENU_FOR_COLLECTIONS_LOCATOR = (By.CSS_SELECTOR, 'h3.submenu-title a[href="https://harvest-clothing.com.ua/accessories/collections/"]')
+   SUB_MENU_FOR_VINTAGE_LOCATOR = (By.CSS_SELECTOR, 'ul.submenu-list a[href*="https://harvest-clothing.com.ua/accessories/collections/vintage/"]')
 
    def click_for_backpacks(self):
        self.mouse_hover(self.MAIN_MENU_ACCESSORIES)
        self.click(self.SUB_MENU_FOR_BACKPACKS_LOCATOR)
 
+   def click_for_bags(self):
+       self.mouse_hover(self.MAIN_MENU_ACCESSORIES)
+       self.click(self.SUB_MENU_FOR_BAGS_LOCATOR)
 
+   def click_for_other(self):
+       self.mouse_hover(self.MAIN_MENU_ACCESSORIES)
+       self.click(self.SUB_MENU_FOR_OTHER_LOCATOR)
+
+   def click_for_collections(self):
+       self.mouse_hover(self.MAIN_MENU_ACCESSORIES)
+       self.click(self.SUB_MENU_FOR_COLLECTIONS_LOCATOR)
+
+   def click_for_vintage(self):
+       self.mouse_hover(self.MAIN_MENU_ACCESSORIES)
+       self.click(self.SUB_MENU_FOR_VINTAGE_LOCATOR)
