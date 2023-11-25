@@ -1,5 +1,4 @@
 import pytest
-
 from page_objects.accessories_page import AccessoriesPage
 from page_objects.login_page import LoginPage
 from page_objects.account_page import AccountPage
@@ -49,5 +48,4 @@ def open_clothing_page_anonim(create_driver):
 def open_accessories_page(login):
     login.driver.get(AppConfig.accessories_page_url)
     return AccessoriesPage(login.driver)
-
 
