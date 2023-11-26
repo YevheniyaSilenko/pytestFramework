@@ -1,4 +1,3 @@
-
 # Smoke Test: Verifies the behavior of clicking on the 'WOMAN' option
 def test_click_for_woman(open_clothing_page):
     clothing_page = open_clothing_page
