@@ -51,4 +51,6 @@ def open_accessories_page(login):
     login.driver.get(utilities.config_reader.AppConfig.accessories_page_url)
     return AccessoriesPage(login.driver)
 
+def pytest_html_report_title(report):
+    report.title = "Hillel test report"
 
