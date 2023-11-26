@@ -6,6 +6,7 @@ from utilities.driver_factory import DriverFactory
 import utilities.config_reader
 from page_objects.clothing_page import ClothingPage
 import utilities.config_reader
+import allure
 
 
 

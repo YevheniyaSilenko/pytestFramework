@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 from page_objects.main_page import MainPage
 
+
 class TestMainPage:
     @pytest.fixture
     def setup(self):
