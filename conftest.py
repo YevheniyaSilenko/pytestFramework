@@ -56,9 +56,8 @@ def env_yaml(request):
 @pytest.fixture
 def create_driver(env, request):
     driver = DriverFactory(
-        browser_id=int(request.config.getoption('--browser')),
-        hub=eval(request.config.getoption('--hub')),
-        headless=eval(request.config.getoption('--headless'))
+        browser_id=env.browser_id,
+        hub=True,
     ).get_driver()
     driver.maximize_window()
     driver.get(env.url)
