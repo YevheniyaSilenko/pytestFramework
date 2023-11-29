@@ -1,7 +1,6 @@
 import sqlite3
 from utilities.deco import singleton
 
-
 @singleton
 class BaseDbConnection:
     def __init__(self, db_params):
