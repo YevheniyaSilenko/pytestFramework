@@ -66,3 +66,5 @@ def pytest_addoption(parser):
     parser.addoption('--hub', action='store', default='False', help='Run test in container Selenoid')
     parser.addoption('--headless', action='store', default='False', help='Run test in headless mode')
     parser.addoption('--browser', action='store', default='1', help='Choose yor browser (1- chrome, 2 -firefox)')
+
+
