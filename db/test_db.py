@@ -12,7 +12,4 @@ def test_add_product(products_repo):
     for prod in all_prod:
         print(prod)
 
-def select_all_products(self):
-    with Sqlite(self.db_path) as conn:  # Додано створення екземпляру класу Sqlite
-         query_select_all = "SELECT * FROM PRODUCTS"
-    return conn.execute(query_select_all).fetchall()
+

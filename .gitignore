@@ -5,5 +5,3 @@ venv
 # allure
 allure-report
 allure-results
-# Jenkins data
-/tests/lesson_27/jenkins/data/

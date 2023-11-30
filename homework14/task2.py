@@ -1,7 +1,7 @@
-### https://store.ferrari.com/en-us/
+# https://store.ferrari.com/en-us/
 
 
-""""""
+"""
 30 XPATH locators
 
 1.loc_absolute=/html
@@ -35,7 +35,7 @@
 29.loc_privacy_policy_footer=//footer//a[contains(text(), "Privacy Policy")]
 30.loc_find_a_store_footer=//footer//a[contains(text(), "Find a Store")]
 
-"""""
+
 10CSS
 
 1.XPath_locator: loc_absolute=/html
@@ -58,3 +58,5 @@ CSS_locator: css_subscribe_button=button:contains("Subscribe")
 CSS_locator: css_instagram_icon_footer=footer i.fa.fa-instagram
 10.XPath_locator: loc_find_a_store_footer=//footer//a[contains(text(), "Find a Store")]
 CSS_locator: css_find_a_store_footer=footer a:contains("Find a Store")
+
+"""
