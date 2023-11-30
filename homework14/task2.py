@@ -1,6 +1,8 @@
 ### https://store.ferrari.com/en-us/
 
-###30 XPATH locators
+
+""""""
+30 XPATH locators
 
 1.loc_absolute=/html
 2.loc_body=//body
@@ -33,8 +35,8 @@
 29.loc_privacy_policy_footer=//footer//a[contains(text(), "Privacy Policy")]
 30.loc_find_a_store_footer=//footer//a[contains(text(), "Find a Store")]
 
-
-###10CSS
+"""""
+10CSS
 
 1.XPath_locator: loc_absolute=/html
 CSS_locator: css_absolute=html
