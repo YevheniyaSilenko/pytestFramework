@@ -44,5 +44,5 @@ def test_delete_product_negative(products_repo):
     db = products_repo
     try:
         db.delete_one(-1)
-    except Exception as e:
+    except Exception as e: #
         print(e)
