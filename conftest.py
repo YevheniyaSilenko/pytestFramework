@@ -1,7 +1,5 @@
 import json
-
 import pytest
-
 from constants import ROOT_PATH
 from db.sqlite_pack.products_repo import ProductsRepo
 from page_objects.accessories_page import AccessoriesPage
@@ -12,7 +10,6 @@ import utilities.config_reader
 from page_objects.clothing_page import ClothingPage
 import utilities.config_reader
 import allure
-
 from utilities.json_to_dict import DictToClass
 
 
@@ -53,6 +50,7 @@ def open_clothing_page_anonim(create_driver):
     driver.get(utilities.config_reader.AppConfig.clothing_page_url)
     return ClothingPage(driver)
 
+
 @pytest.fixture
 def open_accessories_page(login):
     login.driver.get(utilities.config_reader.AppConfig.accessories_page_url)
@@ -68,6 +66,7 @@ def pytest_runtest_makereport(item):
     # be "setup", "call", "teardown"
     setattr(item, "rep_" + rep.when, rep)
 
+
 def pytest_addoption(parser):
     parser.addoption('--env', action='store', default='dev', help='Choose your env')
     parser.addoption('--hub', action='store', default='False', help='Run test in container Selenoid')
@@ -80,7 +79,6 @@ def products_repo(env):
     return ProductsRepo(f"{ROOT_PATH}{env.db_param['path']}")
 
 
-
 def fake_ware(fake):
     data = {
         "age": fake.pyint(18, 60),
@@ -89,9 +87,29 @@ def fake_ware(fake):
     }
     return data
 
+
 @pytest.fixture(scope='session')
 def env(request):
-   _env_name = request.config.getoption('--env')
-   with open(f'{ROOT_PATH}/configs/{_env_name}.json') as f:
+    _env_name = request.config.getoption('--env')
+    with open(f'{ROOT_PATH}/configs/{_env_name}.json') as f:
         conf_dict = json.loads(f.read())
         return DictToClass(**conf_dict)
+
+
+@pytest.fixture
+def create_driver(env, request):
+    driver = DriverFactory(
+        browser_id=int(request.config.getoption('--browser')),
+        hub=eval(request.config.getoption('--hub')),
+        headless=eval(request.config.getoption('--headless'))
+    ).get_driver()
+    driver.maximize_window()
+    driver.get(env.url)
+    yield driver
+    item = request.node
+    if item.rep_call.failed:
+        allure.attach(driver.get_screenshot_as_png(),
+                      name='Fail_screenshot',
+                      attachment_type=allure.attachment_type.PNG)
+    driver.quit()
+
