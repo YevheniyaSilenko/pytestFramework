@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git fetch and setup req') {
+            steps {
+                git branch: 'HW24', credentialsId: 'fce1e5c6-cb26-40cf-8759-114f92dc9968', url: 'https://github.com/YevheniyaSilenko/pytestFramework.git'
+                sh '''#!/bin/bash
+                apt-get update
+                apt-get install -y python3
+                apt-get install -y python3-pip
+                apt install -y python3.11-venv
+                python3 -m venv venv
+                source venv/bin/activate
+                python3 -m pip install -r requirements.txt
+                '''
+            }
+        }
+        stage('Matrix stage') {
+            matrix {
+                axes {
+                    axis {
+                        name 'BROWSER'
+                        values '1', '2'
+                    }
+                    axis {
+                        name 'ENV'
+                        values 'DEV', 'STAGE'
+                    }
+                }
+                stages {
+                    stage('Run unit') {
+                        steps {
+                            sh '''#!/bin/bash
+                            source venv/bin/activate
+                            python3 -m pytest --env ${ENV} homework13
+                            '''
+                        }
+                    }
+                    stage('Run ui') {
+                        steps {
+                            sh '''#!/bin/bash
+                            source venv/bin/activate
+                            python3 -m pytest --hub True --headless True --env ${ENV} --browser ${BROWSER} tests/harvest_store
+                            '''
+                        }
+                    }
+                }
+            }
+        }
+        stage('Report') {
+            steps {
+                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+            }
+        }
+    }
+}
