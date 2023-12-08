@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from constants import ROOT_PATH
+import constants
 from db.sqlite_pack.products_repo import ProductsRepo
 from page_objects.accessories_page import AccessoriesPage
 from page_objects.login_page import LoginPage
@@ -77,7 +77,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope='module')
 def products_repo(env):
-    return ProductsRepo(f"{ROOT_PATH}{env.db_param['path']}")
+    return ProductsRepo(f"{constants.ROOT_PATH}{env.db_param['path']}")
 
 
 
@@ -92,6 +92,6 @@ def fake_ware(fake):
 @pytest.fixture(scope='session')
 def env(request):
    _env_name = request.config.getoption('--env')
-   with open(f'{ROOT_PATH}/configs/{_env_name}.json') as f:
+   with open(f'{constants.ROOT_PATH}/configs/{_env_name}.json') as f:
         conf_dict = json.loads(f.read())
         return DictToClass(**conf_dict)
