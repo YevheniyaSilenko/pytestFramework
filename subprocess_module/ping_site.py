@@ -2,7 +2,7 @@ import subprocess
 import platform
 
 
-def ping_websites(websites, count=2):
+def ping_websites(websites, count=3):
     system_platform = platform.system().lower()
 
     for website in websites:
