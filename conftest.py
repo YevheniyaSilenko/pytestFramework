@@ -1,7 +1,5 @@
 import json
-
 import pytest
-
 import constants
 import utilities.config_reader
 import utilities.config_reader
@@ -12,6 +10,12 @@ from page_objects.clothing_page import ClothingPage
 from page_objects.login_page import LoginPage
 from utilities.driver_factory import DriverFactory
 from utilities.json_to_dict import DictToClass
+
+
+try:
+    from constants import ROOT_PATH
+except ImportError:
+    ROOT_PATH = None
 
 
 @pytest.fixture
@@ -51,6 +55,7 @@ def open_clothing_page_anonim(create_driver):
     driver.get(utilities.config_reader.AppConfig.clothing_page_url)
     return ClothingPage(driver)
 
+
 @pytest.fixture
 def open_accessories_page(login):
     login.driver.get(utilities.config_reader.AppConfig.accessories_page_url)
@@ -66,6 +71,7 @@ def pytest_runtest_makereport(item):
     # be "setup", "call", "teardown"
     setattr(item, "rep_" + rep.when, rep)
 
+
 def pytest_addoption(parser):
     parser.addoption('--env', action='store', default='dev', help='Choose your env')
     parser.addoption('--hub', action='store', default='False', help='Run test in container Selenoid')
@@ -78,7 +84,6 @@ def products_repo(env):
     return ProductsRepo(f"{constants.ROOT_PATH}{env.db_param['path']}")
 
 
-
 def fake_ware(fake):
     data = {
         "age": fake.pyint(18, 60),
@@ -87,9 +92,10 @@ def fake_ware(fake):
     }
     return data
 
+
 @pytest.fixture(scope='session')
 def env(request):
-   _env_name = request.config.getoption('--env')
-   with open(f'{constants.ROOT_PATH}/configs/{_env_name}.json') as f:
+    _env_name = request.config.getoption('--env')
+    with open(f'{constants.ROOT_PATH}/configs/{_env_name}.json') as f:
         conf_dict = json.loads(f.read())
         return DictToClass(**conf_dict)
