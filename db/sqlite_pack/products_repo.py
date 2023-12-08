@@ -1,5 +1,6 @@
 from db.sqlite_pack._base_db_connector import BaseDbConnection
 
+
 class ProductsRepo:
     def __init__(self, db_params):
         self._db = BaseDbConnection(db_params)
