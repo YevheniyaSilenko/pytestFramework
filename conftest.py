@@ -1,8 +1,6 @@
 import json
 import pytest
-
 import constants
-from constants import ROOT_PATH
 import utilities.config_reader
 import utilities.config_reader
 from db.sqlite_pack.products_repo import ProductsRepo
@@ -12,8 +10,6 @@ from page_objects.clothing_page import ClothingPage
 from page_objects.login_page import LoginPage
 from utilities.driver_factory import DriverFactory
 from utilities.json_to_dict import DictToClass
-
-
 
 @pytest.fixture
 def create_driver():
