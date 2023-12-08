@@ -1,8 +1,8 @@
 import json
 
 import pytest
-
 import constants
+from constants import ROOT_PATH
 from db.sqlite_pack.products_repo import ProductsRepo
 from page_objects.accessories_page import AccessoriesPage
 from page_objects.login_page import LoginPage
