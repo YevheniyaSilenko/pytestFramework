@@ -26,5 +26,5 @@ def ping_websites(websites, count=3):
         print("\n" + "=" * 30 + "\n")  # Separator
 
 
-websites_to_ping = ["www.google.com", "www.google.com"]
+websites_to_ping = ["www.google.com", "www.google.com", "www.ferrari.com"]
 ping_websites(websites_to_ping)
