@@ -6,7 +6,7 @@ def test_get_all_prod(products_repo):
 
 
 def test_add_product(products_repo):
-    data = (11, 'GUCCI', 'GLASSES', 3000, 2, 'WOMAN_GLASSES')
+    data = (18, 'GUCCI', 'GLASSES', 3000, 2, 'WOMAN_GLASSES')
     db = products_repo
     db.insert_one(*data)
     all_prod = db.get_all()
