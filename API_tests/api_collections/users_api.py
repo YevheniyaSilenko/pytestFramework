@@ -18,3 +18,15 @@ class UsersApi(BaseApi):
 
     def post_new_user(self, user_data: dict):
         return self._post(self.__url, data=json.dumps(user_data), headers=self.__headers)
+
+    def update_user(self, user_id, user_data: dict):
+        user_url = f'{self.__url}/{user_id}'
+        return self._put(url=user_url, data=json.dumps(user_data), headers=self.__headers)
+
+    def delete_user(self, user_id):
+        user_url = f'{self.__url}/{user_id}'
+        return self._delete(url=user_url, headers=self.__headers)
+
+    def patch_user(self, user_id, partial_user_data: dict):
+        user_url = f'{self.__url}/{user_id}'
+        return self._patch(url=user_url, data=json.dumps(partial_user_data), headers=self.__headers)

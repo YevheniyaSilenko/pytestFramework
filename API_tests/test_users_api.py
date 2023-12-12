@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from api_collections.users_api import UsersApi
+from API_tests.api_collections.users_api import UsersApi
 from utilities.allure_logger import log_response
 
 
@@ -18,3 +18,4 @@ def test_post_new_user(get_fake_user_payload):
     assert resp.status_code == HTTPStatus.CREATED
     data = resp.json()
     assert data['name'] == payload['name']
+

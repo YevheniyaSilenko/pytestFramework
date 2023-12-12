@@ -12,7 +12,6 @@ import utilities.config_reader
 import allure
 from utilities.json_to_dict import DictToClass
 
-
 @pytest.fixture
 def create_driver():
     driver = DriverFactory(
@@ -112,4 +111,6 @@ def create_driver(env, request):
                       name='Fail_screenshot',
                       attachment_type=allure.attachment_type.PNG)
     driver.quit()
+
+
 
