@@ -1,12 +1,12 @@
 import pytest
+
+import utilities.config_reader
+import utilities.config_reader
 from page_objects.accessories_page import AccessoriesPage
-from page_objects.login_page import LoginPage
 from page_objects.account_page import AccountPage
-from utilities.driver_factory import DriverFactory
-import utilities.config_reader
 from page_objects.clothing_page import ClothingPage
-import utilities.config_reader
-import allure
+from page_objects.login_page import LoginPage
+from utilities.driver_factory import DriverFactory
 
 
 @pytest.fixture
@@ -46,6 +46,7 @@ def open_clothing_page_anonim(create_driver):
     driver.get(utilities.config_reader.AppConfig.clothing_page_url)
     return ClothingPage(driver)
 
+
 @pytest.fixture
 def open_accessories_page(login):
     login.driver.get(utilities.config_reader.AppConfig.accessories_page_url)
@@ -61,10 +62,9 @@ def pytest_runtest_makereport(item):
     # be "setup", "call", "teardown"
     setattr(item, "rep_" + rep.when, rep)
 
+
 def pytest_addoption(parser):
     parser.addoption('--env', action='store', default='dev', help='Choose your env')
     parser.addoption('--hub', action='store', default='False', help='Run test in container Selenoid')
     parser.addoption('--headless', action='store', default='False', help='Run test in headless mode')
     parser.addoption('--browser', action='store', default='1', help='Choose yor browser (1- chrome, 2 -firefox)')
-
-
