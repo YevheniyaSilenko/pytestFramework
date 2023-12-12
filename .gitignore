@@ -5,3 +5,4 @@ venv
 # allure
 allure-report
 allure-results
+/Jenkins/data/
