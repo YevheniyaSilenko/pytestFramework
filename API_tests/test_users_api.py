@@ -80,8 +80,9 @@ def test_delete_nonexistent_user():
 
 
 def test_patch_user_invalid_id(get_fake_user_payload):
-    user_id = "invalid_id"  # Replace with an invalid user ID
+    user_id = "invalid user ID"  # Replace with an invalid user ID
     payload = get_fake_user_payload()
     resp = UsersApi().patch_user(user_id, partial_user_data=payload)
     log_response(resp)
     assert resp.status_code == HTTPStatus.BAD_REQUEST
+
