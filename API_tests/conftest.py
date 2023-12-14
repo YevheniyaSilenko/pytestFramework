@@ -2,14 +2,16 @@ import random
 import pytest
 from faker import Faker
 
+fake = Faker()
 
-@pytest.fixture()
+
+@pytest.fixture
 def get_fake_user_payload(fake):
     return {
         "name": fake.name(),
         "email": fake.email(),
-        "gender": random.choice(["male", "female"]),
-        "status": random.choice(["active", "inactive"])
+        "gender": fake.random_element(elements=('male', 'female')),
+        "status": fake.random_element(elements=('active', 'inactive'))
     }
 
 
@@ -17,3 +19,8 @@ def get_fake_user_payload(fake):
 def fake():
     fake = Faker()
     return fake
+
+
+@pytest.fixture
+def user_id_to_delete():
+    return 1830492

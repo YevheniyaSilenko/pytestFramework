@@ -1,4 +1,6 @@
 import json
+from http import HTTPStatus
+
 from API_tests.api_collections._base_api import BaseApi
 from utilities.deco import auto_step
 
