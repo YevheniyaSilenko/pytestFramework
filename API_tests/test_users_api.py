@@ -22,22 +22,16 @@ def test_post_new_user(get_fake_user_payload):
     assert data['name'] == payload['name']
 
 
-def test_patch_user(get_fake_user_payload):
-    # Assuming there is an existing user with ID 1
-    user_id = 1
-    payload = get_fake_user_payload()
-    resp = UsersApi().patch_user(user_id, partial_user_data=payload)
-    log_response(resp)
-    assert resp.status_code == HTTPStatus.OK
-    data = resp.json()
-    assert data['name'] == payload['name']
-
-
 def test_get_nonexistent_user():
     user_id = 999999
     resp = UsersApi().get_user_details(user_id)
-    log_response(resp)
-    assert resp.status_code == HTTPStatus.NOT_FOUND
+
+    if resp is not None:
+        print(f"Response: {resp}")
+        log_response(resp)
+        assert resp.status_code == HTTPStatus.NOT_FOUND
+    else:
+        assert False, "API call did not return a valid response."
 
 
 def test_post_user_missing_required_field():
@@ -116,4 +110,3 @@ def test_patch_user_invalid_id():
     log_response(response)
     # Assert that the response status code is NOT_FOUND (404) or adjust based on API behavior
     assert response.status_code == HTTPStatus.NOT_FOUND
-

@@ -32,3 +32,7 @@ class UsersApi(BaseApi):
     def patch_user(self, user_id, partial_user_data: dict):
         user_url = f'{self.__url}/{user_id}'
         return self._patch(url=user_url, data=json.dumps(partial_user_data), headers=self.__headers)
+
+    def get_user_details(self, user_id):
+        user_url = f'{self.__url}/{user_id}'
+        return self._get(url=user_url, headers=self.__headers)
