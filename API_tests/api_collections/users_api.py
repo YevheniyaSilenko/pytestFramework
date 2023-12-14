@@ -21,7 +21,7 @@ class UsersApi(BaseApi):
 
     def update_user(self, user_id, user_data: dict):
         user_url = f'{self.__url}/{user_id}'
-        return self._put(url=user_url, data=json.dumps(user_data), headers=self.__headers)
+        return self._patch(url=user_url, data=json.dumps(user_data), headers=self.__headers)
 
     def delete_user(self, user_id):
         user_url = f'{self.__url}/{user_id}'

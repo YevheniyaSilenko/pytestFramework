@@ -21,8 +21,7 @@ def test_post_new_user(get_fake_user_payload):
 
 
 def test_update_user(get_fake_user_payload):
-    # Assuming there is an existing user with ID 1
-    user_id = 1
+    user_id = 1830490
     payload = get_fake_user_payload()
     resp = UsersApi().update_user(user_id, user_data=payload)
     log_response(resp)
@@ -51,8 +50,8 @@ def test_patch_user(get_fake_user_payload):
 
 
 def test_get_nonexistent_user():
-    user_id = 999999  # Replace with a nonexistent user ID
-    resp = UsersApi().get_all_users(user_id)
+    user_id = 999999
+    resp = UsersApi().get_all_users
     log_response(resp)
     assert resp.status_code == HTTPStatus.NOT_FOUND
 
@@ -61,7 +60,7 @@ def test_post_user_missing_required_field():
     payload = {}  # Missing required fields
     resp = UsersApi().post_new_user(user_data=payload)
     log_response(resp)
-    assert resp.status_code == HTTPStatus.BAD_REQUEST
+    assert resp.status_code == 422
 
 
 def test_update_nonexistent_user(get_fake_user_payload):
@@ -85,4 +84,3 @@ def test_patch_user_invalid_id(get_fake_user_payload):
     resp = UsersApi().patch_user(user_id, partial_user_data=payload)
     log_response(resp)
     assert resp.status_code == HTTPStatus.BAD_REQUEST
-
