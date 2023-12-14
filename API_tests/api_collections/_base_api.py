@@ -25,10 +25,13 @@ class BaseApi:
         return response
 
     def _patch(self, url, data, headers=None):
-        pass
-
-    def _put(self, url, data, headers=None):
-        pass
+        if not headers:
+            headers = self.__headers
+        response = self.__requests.patch(f'{self.__base_url}{url}', json=data, headers=headers)
+        return response
 
     def _delete(self, url, data=None, headers=None):
-        pass
+        if not headers:
+            headers = self.__headers
+        response = self.__requests.delete(f'{self.__base_url}{url}', json=data, headers=headers)
+        return response
