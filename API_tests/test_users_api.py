@@ -43,7 +43,7 @@ def test_post_user_missing_required_field():
 
 def test_update_nonexistent_user(get_fake_user_payload):
     user_id = 999999  # Replace with a nonexistent user ID
-    payload = get_fake_user_payload()
+    payload = get_fake_user_payload
     resp = UsersApi().update_user(user_id, user_data=payload)
     log_response(resp)
     assert resp.status_code == HTTPStatus.NOT_FOUND
