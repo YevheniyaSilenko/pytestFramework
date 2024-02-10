@@ -1,11 +1,11 @@
-import sys
-import os
 import json
+
+import allure
 import pytest
-import constants
+
+import utilities.config_reader
+import utilities.config_reader
 from constants import ROOT_PATH
-import utilities.config_reader
-import utilities.config_reader
 from db.sqlite_pack.products_repo import ProductsRepo
 from page_objects.accessories_page import AccessoriesPage
 from page_objects.account_page import AccountPage
@@ -13,8 +13,6 @@ from page_objects.clothing_page import ClothingPage
 from page_objects.login_page import LoginPage
 from utilities.driver_factory import DriverFactory
 from utilities.json_to_dict import DictToClass
-
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 @pytest.fixture
 def create_driver():
@@ -79,7 +77,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope='module')
 def products_repo(env):
-    return ProductsRepo(f"{constants.ROOT_PATH}{env.db_param['path']}")
+    return ProductsRepo(f"{ROOT_PATH}{env.db_param['path']}")
 
 
 def fake_ware(fake):
@@ -94,6 +92,26 @@ def fake_ware(fake):
 @pytest.fixture(scope='session')
 def env(request):
     _env_name = request.config.getoption('--env')
-    with open(f'{constants.ROOT_PATH}/configs/{_env_name}.json') as f:
+    with open(f'{ROOT_PATH}/configs/{_env_name}.json') as f:
         conf_dict = json.loads(f.read())
         return DictToClass(**conf_dict)
+
+
+@pytest.fixture
+def create_driver(env, request):
+    driver = DriverFactory(
+        browser_id=int(request.config.getoption('--browser')),
+        hub=eval(request.config.getoption('--hub')),
+        headless=eval(request.config.getoption('--headless'))
+    ).get_driver()
+    driver.maximize_window()
+    driver.get(env.url)
+    yield driver
+    item = request.node
+    if item.rep_call.failed:
+        allure.attach(driver.get_screenshot_as_png(),
+                      name='Fail_screenshot',
+                      attachment_type=allure.attachment_type.PNG)
+    driver.quit()
+
+
